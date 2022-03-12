@@ -6,6 +6,15 @@
       "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/14",
       "city": "Medan",
+      "category":"Western",
+      "tags": [
+        {
+          "name":"Western Food"
+        },
+        {
+          "name":"Dessert"
+        }
+      ],
       "rating": 4.2,
       "menus": {
         "foods": [
@@ -72,6 +81,15 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/25",
       "city": "Gorontalo",
       "rating": 4,
+      "category":"Cafe",
+      "tags": [
+        {
+          "name":"Bread"
+        },
+        {
+          "name":"Local taste"
+        }
+      ],
       "menus": {
         "foods": [
           {
@@ -143,6 +161,15 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/03",
       "city": "Surabaya",
       "rating": 4.2,
+      "category":"Western",
+      "tags": [
+        {
+          "name":"Western Food"
+        },
+        {
+          "name":"Dessert"
+        }
+      ],
       "menus": {
         "foods": [
           {
@@ -217,6 +244,15 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/15",
       "city": "Aceh",
       "rating": 4.6,
+      "category":"Pizza",
+      "tags": [
+        {
+          "name":"Pizza"
+        },
+        {
+          "name":"Coffee"
+        }
+      ],
       "menus": {
         "foods": [
           {
@@ -309,6 +345,15 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/05",
       "city": "Balikpapan",
       "rating": 4.5,
+      "category":"Steak",
+      "tags": [
+        {
+          "name":"Local taste"
+        },
+        {
+          "name":"Beverage"
+        }
+      ],
       "menus": {
         "foods": [
           {
@@ -377,6 +422,15 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/22",
       "city": "Medan",
       "rating": 3.7,
+      "category":"Local",
+      "tags": [
+        {
+          "name":"Local taste"
+        },
+        {
+          "name":"Beverage"
+        }
+      ],
       "menus": {
         "foods": [
           {
@@ -436,6 +490,15 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/18",
       "city": "Surabaya",
       "rating": 3.9,
+      "category":"Eastern",
+      "tags": [
+        {
+          "name":"Spicy"
+        },
+        {
+          "name":"Coffee"
+        }
+      ],
       "menus": {
         "foods": [
           {
@@ -510,6 +573,15 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/35",
       "city": "Balikpapan",
       "rating": 4.1,
+      "category":"Western",
+      "tags": [
+        {
+          "name":"Western Food"
+        },
+        {
+          "name":"Beverage"
+        }
+      ],
       "menus": {
         "foods": [
           {
@@ -560,6 +632,15 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/38",
       "city": "Bali",
       "rating": 4,
+      "category":"Local",
+      "tags": [
+        {
+          "name":"Local taste"
+        },
+        {
+          "name":"Coffee"
+        }
+      ],
       "menus": {
         "foods": [
           {
@@ -625,6 +706,15 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/10",
       "city": "Surabaya",
       "rating": 4.4,
+      "category":"Pizza",
+      "tags": [
+        {
+          "name":"Pizza"
+        },
+        {
+          "name":"Salad"
+        }
+      ],
       "menus": {
         "foods": [
           {

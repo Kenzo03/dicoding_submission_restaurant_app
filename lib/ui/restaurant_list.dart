@@ -15,7 +15,14 @@ class RestaurantListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Restoran')),
+        appBar: AppBar(
+          title: const Text('Restoran'),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(16),
+            ),
+          ),
+        ),
         body: _buildRestaurantList(context));
   }
 
@@ -30,7 +37,7 @@ class RestaurantListPage extends StatelessWidget {
             return ListView.builder(
                 itemCount: restaurant.restaurants.length,
                 itemBuilder: (context, index) {
-                  return _buildRestaurantItem(
+                  return _buildRestaurantItem2(
                       context, restaurant.restaurants[index]);
                 });
           } else {
@@ -57,5 +64,77 @@ class RestaurantListPage extends StatelessWidget {
             arguments: restaurant);
       },
     ));
+  }
+
+  Widget _buildRestaurantItem2(
+      BuildContext context, RestaurantItem restaurant) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+              flex: 2,
+              child: ClipRRect(
+                child: Image.network(restaurant.pictureId, fit: BoxFit.cover),
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+              )),
+          Expanded(
+            flex: 3,
+            child: _buildRestaurantInfo(
+              context,
+              restaurant.name,
+              restaurant.city,
+              restaurant.rating,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRestaurantInfo(
+      BuildContext context, String name, String city, double rating) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(5.0, 0.0, 0.0, 0.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            name,
+            style: const TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 16.0,
+            ),
+          ),
+          const Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
+          Row(
+            children: [
+              Icon(Icons.location_on, color: Colors.grey, size: 14),
+              SizedBox(
+                width: 8,
+              ),
+              Text(
+                city,
+                style: const TextStyle(fontSize: 12.0),
+              ),
+            ],
+          ),
+          const Padding(padding: EdgeInsets.symmetric(vertical: 1.0)),
+          Row(
+            children: [
+              Icon(Icons.star, color: Colors.orange, size: 14),
+              SizedBox(
+                width: 8,
+              ),
+              Text(
+                '$rating',
+                style: const TextStyle(fontSize: 12.0),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
