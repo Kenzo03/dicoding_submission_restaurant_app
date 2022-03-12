@@ -69,6 +69,8 @@ class RestaurantItem {
         "pictureId": pictureId,
         "city": city,
         "rating": rating,
+        "category": category,
+        "tags": tags.toList(),
         "menus": menus.toJson(),
       };
 }

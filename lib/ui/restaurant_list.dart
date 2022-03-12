@@ -34,12 +34,31 @@ class RestaurantListPage extends StatelessWidget {
           if (snapshot.hasData) {
             var jsonMap = jsonDecode(snapshot.data!);
             var restaurant = Restaurant.fromJson(jsonMap);
-            return ListView.builder(
-                itemCount: restaurant.restaurants.length,
-                itemBuilder: (context, index) {
-                  return _buildRestaurantItem2(
-                      context, restaurant.restaurants[index]);
-                });
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Restaurant List',
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
+                  ),
+                  SizedBox(height: 12),
+                  Expanded(
+                    child: Container(
+                      child: ListView.builder(
+                          itemCount: restaurant.restaurants.length,
+                          itemBuilder: (context, index) {
+                            return _buildRestaurantItem(
+                                context, restaurant.restaurants[index]);
+                          }),
+                    ),
+                  ),
+                ],
+              ),
+            );
           } else {
             return Column(
               children: const [Text('No Data')],
@@ -49,27 +68,8 @@ class RestaurantListPage extends StatelessWidget {
   }
 
   Widget _buildRestaurantItem(BuildContext context, RestaurantItem restaurant) {
-    return Material(
-        child: ListTile(
-      contentPadding:
-          const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      leading: Image.network(
-        restaurant.pictureId,
-        width: 100,
-      ),
-      title: Text(restaurant.name),
-      subtitle: Text(restaurant.city),
-      onTap: () {
-        Navigator.pushNamed(context, RestaurantDetailPage.routeName,
-            arguments: restaurant);
-      },
-    ));
-  }
-
-  Widget _buildRestaurantItem2(
-      BuildContext context, RestaurantItem restaurant) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+      padding: const EdgeInsets.fromLTRB(0, 4, 0, 4),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -85,6 +85,7 @@ class RestaurantListPage extends StatelessWidget {
               context,
               restaurant.name,
               restaurant.city,
+              restaurant.category,
               restaurant.rating,
             ),
           ),
@@ -93,8 +94,8 @@ class RestaurantListPage extends StatelessWidget {
     );
   }
 
-  Widget _buildRestaurantInfo(
-      BuildContext context, String name, String city, double rating) {
+  Widget _buildRestaurantInfo(BuildContext context, String name, String city,
+      String category, double rating) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(5.0, 0.0, 0.0, 0.0),
       child: Column(
@@ -116,6 +117,18 @@ class RestaurantListPage extends StatelessWidget {
               ),
               Text(
                 city,
+                style: const TextStyle(fontSize: 12.0),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Icon(Icons.category, color: Colors.grey, size: 14),
+              SizedBox(
+                width: 8,
+              ),
+              Text(
+                category,
                 style: const TextStyle(fontSize: 12.0),
               ),
             ],
