@@ -33,9 +33,7 @@ class HomePage extends StatelessWidget {
             future: DefaultAssetBundle.of(context)
                 .loadString('assets/local_restaurant.json'),
             builder: (context, snapshot) {
-              print('datanya ${snapshot.data}');
               if (snapshot.hasData) {
-                print('ada data');
                 var jsonMap = jsonDecode(snapshot.data!);
                 var restaurant = Restaurant.fromJson(jsonMap);
                 return ListView.builder(
@@ -45,7 +43,6 @@ class HomePage extends StatelessWidget {
                           context, restaurant.restaurants[index]);
                     });
               } else {
-                print('ga ada data');
                 return Column(
                   children: const [Text('No Data')],
                 );
