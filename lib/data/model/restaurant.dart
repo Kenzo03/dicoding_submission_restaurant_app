@@ -4,8 +4,6 @@
 
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
 Restaurant restaurantFromJson(String str) =>
     Restaurant.fromJson(json.decode(str));
 

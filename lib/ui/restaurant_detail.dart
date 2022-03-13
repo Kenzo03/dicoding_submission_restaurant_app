@@ -17,7 +17,7 @@ class RestaurantDetailPage extends StatelessWidget {
             child: Column(
           children: [
             Text(restaurantData.description),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Text(restaurantData.city)
