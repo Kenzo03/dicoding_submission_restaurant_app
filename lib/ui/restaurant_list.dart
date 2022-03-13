@@ -4,9 +4,6 @@ import 'dart:convert';
 //Model
 import '../data/model/restaurant.dart';
 
-//UI
-import './restaurant_detail.dart';
-
 class RestaurantListPage extends StatelessWidget {
   static const routeName = '/restaurant_list';
 
@@ -17,7 +14,7 @@ class RestaurantListPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Restoran'),
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(16),
             ),
@@ -39,22 +36,19 @@ class RestaurantListPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Restaurant List',
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.left,
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Expanded(
-                    child: Container(
-                      child: ListView.builder(
-                          itemCount: restaurant.restaurants.length,
-                          itemBuilder: (context, index) {
-                            return _buildRestaurantItem(
-                                context, restaurant.restaurants[index]);
-                          }),
-                    ),
+                    child: ListView.builder(
+                        itemCount: restaurant.restaurants.length,
+                        itemBuilder: (context, index) {
+                          return _buildRestaurantItem(
+                              context, restaurant.restaurants[index]);
+                        }),
                   ),
                 ],
               ),
@@ -77,7 +71,7 @@ class RestaurantListPage extends StatelessWidget {
               flex: 2,
               child: ClipRRect(
                 child: Image.network(restaurant.pictureId, fit: BoxFit.cover),
-                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
               )),
           Expanded(
             flex: 3,
@@ -111,8 +105,8 @@ class RestaurantListPage extends StatelessWidget {
           const Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
           Row(
             children: [
-              Icon(Icons.location_on, color: Colors.grey, size: 14),
-              SizedBox(
+              const Icon(Icons.location_on, color: Colors.grey, size: 14),
+              const SizedBox(
                 width: 8,
               ),
               Text(
@@ -123,8 +117,8 @@ class RestaurantListPage extends StatelessWidget {
           ),
           Row(
             children: [
-              Icon(Icons.category, color: Colors.grey, size: 14),
-              SizedBox(
+              const Icon(Icons.category, color: Colors.grey, size: 14),
+              const SizedBox(
                 width: 8,
               ),
               Text(
@@ -136,8 +130,8 @@ class RestaurantListPage extends StatelessWidget {
           const Padding(padding: EdgeInsets.symmetric(vertical: 1.0)),
           Row(
             children: [
-              Icon(Icons.star, color: Colors.orange, size: 14),
-              SizedBox(
+              const Icon(Icons.star, color: Colors.orange, size: 14),
+              const SizedBox(
                 width: 8,
               ),
               Text(
@@ -146,6 +140,15 @@ class RestaurantListPage extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(
+              height: 100,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: tags.map((tag) {
+                  return Padding(
+                      padding: const EdgeInsets.all(4), child: Text(tag));
+                }).toList(),
+              ))
         ],
       ),
     );
