@@ -69,9 +69,15 @@ class RestaurantListPage extends StatelessWidget {
         children: <Widget>[
           Expanded(
               flex: 2,
-              child: ClipRRect(
-                child: Image.network(restaurant.pictureId, fit: BoxFit.cover),
-                borderRadius: const BorderRadius.all(Radius.circular(8)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ClipRRect(
+                    child: Image.network(restaurant.pictureId,
+                        height: 120, fit: BoxFit.fill),
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  ),
+                ],
               )),
           Expanded(
             flex: 3,
@@ -141,12 +147,16 @@ class RestaurantListPage extends StatelessWidget {
             ],
           ),
           SizedBox(
-              height: 100,
+              height: 50,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: tags.map((tag) {
-                  return Padding(
-                      padding: const EdgeInsets.all(4), child: Text(tag));
+                  return Row(
+                    children: [
+                      Chip(padding: const EdgeInsets.all(4), label: Text(tag)),
+                      const SizedBox(width: 8)
+                    ],
+                  );
                 }).toList(),
               ))
         ],
