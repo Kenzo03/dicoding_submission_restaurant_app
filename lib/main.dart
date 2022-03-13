@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         RestaurantListPage.routeName: (context) => const RestaurantListPage(),
         RestaurantDetailPage.routeName: (context) => RestaurantDetailPage(
-              restaurantData:
+              restaurant:
                   ModalRoute.of(context)?.settings.arguments as RestaurantItem,
             )
       },

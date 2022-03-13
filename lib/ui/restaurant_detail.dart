@@ -4,23 +4,23 @@ import '../data/model/restaurant.dart';
 class RestaurantDetailPage extends StatelessWidget {
   static const routeName = '/restaurant_detail';
 
-  final RestaurantItem restaurantData;
+  final RestaurantItem restaurant;
 
-  const RestaurantDetailPage({Key? key, required this.restaurantData})
+  const RestaurantDetailPage({Key? key, required this.restaurant})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(restaurantData.name)),
+        appBar: AppBar(title: Text(restaurant.name)),
         body: SingleChildScrollView(
             child: Column(
           children: [
-            Text(restaurantData.description),
+            Text(restaurant.description),
             const SizedBox(
               height: 8,
             ),
-            Text(restaurantData.city)
+            Text(restaurant.city)
           ],
         )));
   }

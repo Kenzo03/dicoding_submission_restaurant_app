@@ -4,6 +4,9 @@ import 'dart:convert';
 //Model
 import '../data/model/restaurant.dart';
 
+//UI
+import './restaurant_detail.dart';
+
 class RestaurantListPage extends StatelessWidget {
   static const routeName = '/restaurant_list';
 
@@ -62,34 +65,40 @@ class RestaurantListPage extends StatelessWidget {
   }
 
   Widget _buildRestaurantItem(BuildContext context, RestaurantItem restaurant) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 4, 0, 4),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Expanded(
-              flex: 2,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ClipRRect(
-                    child: Image.network(restaurant.pictureId,
-                        height: 120, fit: BoxFit.fill),
-                    borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  ),
-                ],
-              )),
-          Expanded(
-            flex: 3,
-            child: _buildRestaurantInfo(
-                context,
-                restaurant.name,
-                restaurant.city,
-                restaurant.category,
-                restaurant.rating,
-                restaurant.tags),
-          ),
-        ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, RestaurantDetailPage.routeName,
+            arguments: restaurant);
+      },
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 4, 0, 4),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+                flex: 2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ClipRRect(
+                      child: Image.network(restaurant.pictureId,
+                          height: 120, fit: BoxFit.fill),
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    ),
+                  ],
+                )),
+            Expanded(
+              flex: 3,
+              child: _buildRestaurantInfo(
+                  context,
+                  restaurant.name,
+                  restaurant.city,
+                  restaurant.category,
+                  restaurant.rating,
+                  restaurant.tags),
+            ),
+          ],
+        ),
       ),
     );
   }
