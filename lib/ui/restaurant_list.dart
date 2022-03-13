@@ -7,6 +7,9 @@ import '../data/model/restaurant.dart';
 //UI
 import './restaurant_detail.dart';
 
+//Widget
+import '../widgets/blankslate.dart';
+
 class RestaurantListPage extends StatelessWidget {
   static const routeName = '/restaurant_list';
 
@@ -56,11 +59,12 @@ class RestaurantListPage extends StatelessWidget {
                 ],
               ),
             );
-          } else {
-            return Column(
-              children: const [Text('No Data')],
-            );
+          } else if (snapshot.hasError) {
+            return const Blankslate();
           }
+          return Center(
+            child: const CircularProgressIndicator(),
+          );
         });
   }
 
