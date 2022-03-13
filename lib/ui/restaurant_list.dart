@@ -62,8 +62,8 @@ class RestaurantListPage extends StatelessWidget {
           } else if (snapshot.hasError) {
             return const Blankslate();
           }
-          return Center(
-            child: const CircularProgressIndicator(),
+          return const Center(
+            child: CircularProgressIndicator(),
           );
         });
   }

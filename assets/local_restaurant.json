@@ -7,6 +7,7 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/14",
       "city": "Medan",
       "category": "Western",
+      "isTrending": true,
       "tags": [
         "Western Food",
         "Dessert"
@@ -78,6 +79,7 @@
       "city": "Gorontalo",
       "rating": 4,
       "category": "Cafe",
+      "isTrending": false,
       "tags": [
         "Bread",
         "Local taste"
@@ -154,6 +156,7 @@
       "city": "Surabaya",
       "rating": 4.2,
       "category": "Western",
+      "isTrending": false,
       "tags": [
         "Western Food",
         "Dessert"
@@ -233,6 +236,7 @@
       "city": "Aceh",
       "rating": 4.6,
       "category": "Pizza",
+      "isTrending": true,
       "tags": [
         "Pizza",
         "Coffee"
@@ -330,6 +334,7 @@
       "city": "Balikpapan",
       "rating": 4.5,
       "category": "Steak",
+      "isTrending": true,
       "tags": [
         "Local taste",
         "Beverage"
@@ -403,6 +408,7 @@
       "city": "Medan",
       "rating": 3.7,
       "category": "Local",
+      "isTrending": false,
       "tags": [
         "Local taste",
         "Beverage"
@@ -467,6 +473,7 @@
       "city": "Surabaya",
       "rating": 3.9,
       "category": "Eastern",
+      "isTrending": true,
       "tags": [
         "Spicy",
         "Coffee"
@@ -546,6 +553,7 @@
       "city": "Balikpapan",
       "rating": 4.1,
       "category": "Western",
+      "isTrending": false,
       "tags": [
         "Western Food",
         "Beverage"
@@ -601,6 +609,7 @@
       "city": "Bali",
       "rating": 4,
       "category": "Local",
+      "isTrending": true,
       "tags": [
         "Local taste",
         "Coffee"
@@ -671,6 +680,7 @@
       "city": "Surabaya",
       "rating": 4.4,
       "category": "Pizza",
+      "isTrending": true,
       "tags": [
         "Pizza",
         "Salad"
