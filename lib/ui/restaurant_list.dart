@@ -82,12 +82,12 @@ class RestaurantListPage extends StatelessWidget {
           Expanded(
             flex: 3,
             child: _buildRestaurantInfo(
-              context,
-              restaurant.name,
-              restaurant.city,
-              restaurant.category,
-              restaurant.rating,
-            ),
+                context,
+                restaurant.name,
+                restaurant.city,
+                restaurant.category,
+                restaurant.rating,
+                restaurant.tags),
           ),
         ],
       ),
@@ -95,7 +95,7 @@ class RestaurantListPage extends StatelessWidget {
   }
 
   Widget _buildRestaurantInfo(BuildContext context, String name, String city,
-      String category, double rating) {
+      String category, double rating, List<String> tags) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(5.0, 0.0, 0.0, 0.0),
       child: Column(

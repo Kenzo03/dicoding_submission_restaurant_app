@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 Restaurant restaurantFromJson(String str) =>
     Restaurant.fromJson(json.decode(str));
 
@@ -46,7 +48,7 @@ class RestaurantItem {
   String city;
   double rating;
   String category;
-  List<MenuItem> tags;
+  List<String> tags;
   Menus menus;
 
   factory RestaurantItem.fromJson(Map<String, dynamic> json) => RestaurantItem(
@@ -57,8 +59,7 @@ class RestaurantItem {
         city: json["city"],
         rating: json["rating"].toDouble(),
         category: json["category"],
-        tags:
-            List<MenuItem>.from(json["tags"].map((x) => MenuItem.fromJson(x))),
+        tags: List<String>.from(json["tags"].map((x) => x)),
         menus: Menus.fromJson(json["menus"]),
       );
 
