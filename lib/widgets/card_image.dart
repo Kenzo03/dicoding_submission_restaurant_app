@@ -26,7 +26,7 @@ class CardImage extends StatelessWidget {
         padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
         child: Container(
           height: MediaQuery.of(context).size.height / 2.9,
-          width: MediaQuery.of(context).size.width / 2,
+          width: MediaQuery.of(context).size.width / 1.2,
           child: Card(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
@@ -62,12 +62,13 @@ class CardImage extends StatelessWidget {
                               Icon(
                                 Icons.star,
                                 color: Colors.orange.shade400,
-                                size: 10,
+                                size: 16,
                               ),
+                              SizedBox(width: 4),
                               Text(
                                 "$rating",
                                 style: TextStyle(
-                                  fontSize: 10.0,
+                                  fontSize: 14.0,
                                 ),
                               ),
                             ],
@@ -97,16 +98,46 @@ class CardImage extends StatelessWidget {
                   padding: EdgeInsets.only(left: 15.0),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    child: Text(
-                      city,
-                      style: TextStyle(
-                        fontSize: 12.0,
-                        fontWeight: FontWeight.w300,
-                      ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.location_on,
+                            size: 14, color: Colors.black54),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          city,
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 7.0),
+                Padding(
+                  padding: EdgeInsets.only(left: 15.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      children: [
+                        Icon(Icons.category, size: 14, color: Colors.black54),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          category,
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

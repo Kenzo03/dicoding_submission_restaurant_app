@@ -116,12 +116,16 @@ class RestaurantListPage extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.only(right: 10.0),
                     child: CardImage(
-                      imgUrl: tempData.pictureId,
-                      category: tempData.category,
-                      city: tempData.city,
-                      name: tempData.name,
-                      rating: tempData.rating,
-                    ),
+                        imgUrl: tempData.pictureId,
+                        category: tempData.category,
+                        city: tempData.city,
+                        name: tempData.name,
+                        rating: tempData.rating,
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, RestaurantDetailPage.routeName,
+                              arguments: tempData);
+                        }),
                   );
                 },
               ),
