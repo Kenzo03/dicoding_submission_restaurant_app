@@ -32,3 +32,28 @@ Future<List<RestaurantItem>> fetchTrendingRestaurant() async {
         restaurant.restaurants.where((x) => x.isTrending));
   }
 }
+
+Future<List<RestaurantItem>> fetchRestaurants() async {
+  var jsonText = await rootBundle.loadString('assets/local_restaurant.json');
+  var jsonMap = jsonDecode(jsonText);
+  var restaurant = Restaurant.fromJson(jsonMap);
+
+  if (jsonText == '') {
+    return [];
+  } else {
+    return List<RestaurantItem>.from(restaurant.restaurants);
+  }
+}
+
+Future<List<RestaurantItem>> fetchRestaurantById(String paramId) async {
+  var jsonText = await rootBundle.loadString('assets/local_restaurant.json');
+  var jsonMap = jsonDecode(jsonText);
+  var restaurant = Restaurant.fromJson(jsonMap);
+
+  if (jsonText == '') {
+    return [];
+  } else {
+    return List<RestaurantItem>.from(
+        restaurant.restaurants.where((x) => x.id == paramId));
+  }
+}
