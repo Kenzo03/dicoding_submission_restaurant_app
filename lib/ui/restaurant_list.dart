@@ -29,7 +29,21 @@ class RestaurantListPage extends StatelessWidget {
             ),
           ),
         ),
-        body: _buildRestaurantCategory(context));
+        body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: ListView(children: [
+              Text('Category'),
+              SizedBox(height: 10),
+              _buildRestaurantCategory(context),
+              SizedBox(height: 20),
+              const Text(
+                'Restaurant List',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              const SizedBox(height: 10),
+              _buildRestaurantList(context)
+            ])));
   }
 
   Widget _buildRestaurantCategory(BuildContext context) {
@@ -37,26 +51,45 @@ class RestaurantListPage extends StatelessWidget {
         future: fetchCategories(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (context, index) {
-                          return Text(snapshot.data![index]);
-                        },
-                      ),
-                    )
-                  ]),
+            return Container(
+              height: MediaQuery.of(context).size.height / 6,
+              child: ListView.builder(
+                primary: false,
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  return _buildRestaurantCategoryItem(
+                      context, snapshot.data![index]);
+                },
+              ),
             );
           } else if (snapshot.hasError) {}
           return const Center(
             child: CircularProgressIndicator(),
           );
         });
+  }
+
+  Padding _buildRestaurantCategoryItem(BuildContext context, String label) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8.0),
+      child: Container(
+          decoration: BoxDecoration(
+              color: Colors.orange, borderRadius: BorderRadius.circular(8)),
+          height: MediaQuery.of(context).size.height / 6,
+          width: MediaQuery.of(context).size.height / 4,
+          child: Center(
+              child: Text(
+            label,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ))),
+    );
   }
 
   Widget _buildRestaurantList(BuildContext context) {
@@ -67,27 +100,14 @@ class RestaurantListPage extends StatelessWidget {
           if (snapshot.hasData) {
             var jsonMap = jsonDecode(snapshot.data!);
             var restaurant = Restaurant.fromJson(jsonMap);
-            return Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Restaurant List',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left,
-                  ),
-                  const SizedBox(height: 12),
-                  Expanded(
-                    child: ListView.builder(
-                        itemCount: restaurant.restaurants.length,
-                        itemBuilder: (context, index) {
-                          return _buildRestaurantItem(
-                              context, restaurant.restaurants[index]);
-                        }),
-                  ),
-                ],
-              ),
+            return Container(
+              height: MediaQuery.of(context).size.height,
+              child: ListView.builder(
+                  itemCount: restaurant.restaurants.length,
+                  itemBuilder: (context, index) {
+                    return _buildRestaurantItem(
+                        context, restaurant.restaurants[index]);
+                  }),
             );
           } else if (snapshot.hasError) {
             return const Blankslate();
