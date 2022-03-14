@@ -9,6 +9,7 @@ import './restaurant_detail.dart';
 
 //Widget
 import '../widgets/blankslate.dart';
+import '../widgets/card_image.dart';
 
 //Controller
 import '../controller/restaurant_controller.dart';
@@ -32,17 +33,21 @@ class RestaurantListPage extends StatelessWidget {
         body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: ListView(children: [
-              Text('Category'),
+              const Text(
+                'Category',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
               SizedBox(height: 10),
               _buildRestaurantCategory(context),
               SizedBox(height: 20),
               const Text(
-                'Restaurant List',
+                'Trending Restaurant',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.left,
               ),
               const SizedBox(height: 10),
-              _buildRestaurantList(context)
+              _buildTrendingRestaurantList(context)
             ])));
   }
 
@@ -90,6 +95,44 @@ class RestaurantListPage extends StatelessWidget {
             textAlign: TextAlign.center,
           ))),
     );
+  }
+
+  Widget _buildTrendingRestaurantList(BuildContext context) {
+    return FutureBuilder<List<RestaurantItem>>(
+        future: fetchTrendingRestaurant(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Container(
+              height: MediaQuery.of(context).size.height / 2.4,
+              width: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                primary: false,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: snapshot.data!.length,
+                itemBuilder: (BuildContext context, int index) {
+                  RestaurantItem tempData = snapshot.data![index];
+
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: CardImage(
+                      imgUrl: tempData.pictureId,
+                      category: tempData.category,
+                      city: tempData.city,
+                      name: tempData.name,
+                      rating: tempData.rating,
+                    ),
+                  );
+                },
+              ),
+            );
+          } else if (snapshot.hasError) {
+            return const Blankslate();
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
   }
 
   Widget _buildRestaurantList(BuildContext context) {
