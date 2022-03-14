@@ -10,6 +10,9 @@ import './restaurant_detail.dart';
 //Widget
 import '../widgets/blankslate.dart';
 
+//Controller
+import '../controller/restaurant_controller.dart';
+
 class RestaurantListPage extends StatelessWidget {
   static const routeName = '/restaurant_list';
 
@@ -26,7 +29,34 @@ class RestaurantListPage extends StatelessWidget {
             ),
           ),
         ),
-        body: _buildRestaurantList(context));
+        body: _buildRestaurantCategory(context));
+  }
+
+  Widget _buildRestaurantCategory(BuildContext context) {
+    return FutureBuilder<List<String>>(
+        future: fetchCategories(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          return Text(snapshot.data![index]);
+                        },
+                      ),
+                    )
+                  ]),
+            );
+          } else if (snapshot.hasError) {}
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
   }
 
   Widget _buildRestaurantList(BuildContext context) {
