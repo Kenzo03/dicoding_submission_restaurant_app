@@ -36,6 +36,8 @@ class RestaurantItem {
     required this.rating,
     required this.category,
     required this.isTrending,
+    required this.isRecommended,
+    required this.isFavorited,
     required this.tags,
     required this.menus,
   });
@@ -48,6 +50,8 @@ class RestaurantItem {
   double rating;
   String category;
   bool isTrending;
+  bool isRecommended;
+  bool isFavorited;
   List<String> tags;
   Menus menus;
 
@@ -60,6 +64,8 @@ class RestaurantItem {
         rating: json["rating"].toDouble(),
         category: json["category"],
         isTrending: json["isTrending"],
+        isRecommended: json["isRecommended"],
+        isFavorited: json["isFavorited"],
         tags: List<String>.from(json["tags"].map((x) => x)),
         menus: Menus.fromJson(json["menus"]),
       );
@@ -73,6 +79,8 @@ class RestaurantItem {
         "rating": rating,
         "category": category,
         "isTrending": isTrending,
+        "isRecommended": isRecommended,
+        "isFavorited": isFavorited,
         "tags": tags.toList(),
         "menus": menus.toJson(),
       };

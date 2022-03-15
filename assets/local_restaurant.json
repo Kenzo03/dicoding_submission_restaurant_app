@@ -8,6 +8,8 @@
       "city": "Medan",
       "category": "Western",
       "isTrending": true,
+      "isRecommended":true,
+      "isFavorited":true,
       "tags": [
         "Western Food",
         "Dessert"
@@ -80,6 +82,8 @@
       "rating": 4,
       "category": "Cafe",
       "isTrending": false,
+      "isRecommended":true,
+      "isFavorited":false,
       "tags": [
         "Bread",
         "Local taste"
@@ -157,6 +161,8 @@
       "rating": 4.2,
       "category": "Western",
       "isTrending": false,
+      "isRecommended":false,
+      "isFavorited":true,
       "tags": [
         "Western Food",
         "Dessert"
@@ -237,6 +243,8 @@
       "rating": 4.6,
       "category": "Pizza",
       "isTrending": true,
+      "isRecommended":false,
+      "isFavorited":false,
       "tags": [
         "Pizza",
         "Coffee"
@@ -335,6 +343,8 @@
       "rating": 4.5,
       "category": "Steak",
       "isTrending": true,
+      "isRecommended":true,
+      "isFavorited":true,
       "tags": [
         "Local taste",
         "Beverage"
@@ -409,6 +419,8 @@
       "rating": 3.7,
       "category": "Local",
       "isTrending": false,
+      "isRecommended":true,
+      "isFavorited":true,
       "tags": [
         "Local taste",
         "Beverage"
@@ -474,6 +486,8 @@
       "rating": 3.9,
       "category": "Eastern",
       "isTrending": true,
+      "isRecommended":false,
+      "isFavorited":false,
       "tags": [
         "Spicy",
         "Coffee"
@@ -554,6 +568,8 @@
       "rating": 4.1,
       "category": "Western",
       "isTrending": false,
+      "isRecommended":false,
+      "isFavorited":false,
       "tags": [
         "Western Food",
         "Beverage"
@@ -610,6 +626,8 @@
       "rating": 4,
       "category": "Local",
       "isTrending": true,
+      "isRecommended":false,
+      "isFavorited":false,
       "tags": [
         "Local taste",
         "Coffee"
@@ -681,6 +699,8 @@
       "rating": 4.4,
       "category": "Pizza",
       "isTrending": true,
+      "isRecommended":false,
+      "isFavorited":true,
       "tags": [
         "Pizza",
         "Salad"
