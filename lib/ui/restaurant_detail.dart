@@ -129,24 +129,48 @@ class RestaurantDetailPage extends StatelessWidget {
 
   Widget _buildMenuList(
       BuildContext context, List<MenuItem> items, String imgPath) {
-    return LimitedBox(
-        maxHeight: 800,
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Flexible(
-            child: ListView.builder(
-              shrinkWrap: true,
-              physics: const ClampingScrollPhysics(),
-              itemCount: items.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                    contentPadding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
-                    leading: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.asset(imgPath)),
-                    title: Text(items[index].name));
-              },
-            ),
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+      ),
+      shrinkWrap: true,
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        return Card(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8), bottom: Radius.zero),
+                  child: Image.asset(
+                    imgPath,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              // const SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  items[index].name,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ]));
+        );
+        // ListTile(
+        //     contentPadding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
+        //     leading: ClipRRect(
+        //         borderRadius: BorderRadius.circular(8),
+        //         child: Image.asset(imgPath)),
+        //     title: Text(items[index].name));
+      },
+    );
   }
 }
