@@ -23,8 +23,8 @@ class CardImage extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
-        child: Container(
+        padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
+        child: SizedBox(
           height: MediaQuery.of(context).size.height / 2.9,
           width: MediaQuery.of(context).size.width / 1.2,
           child: Card(
@@ -35,11 +35,11 @@ class CardImage extends StatelessWidget {
               children: <Widget>[
                 Stack(
                   children: <Widget>[
-                    Container(
+                    SizedBox(
                       height: MediaQuery.of(context).size.height / 3.7,
                       width: MediaQuery.of(context).size.width,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(10.0),
                           topRight: Radius.circular(10.0),
                         ),
@@ -56,7 +56,7 @@ class CardImage extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(4.0)),
                         child: Padding(
-                          padding: EdgeInsets.all(2.0),
+                          padding: const EdgeInsets.all(2.0),
                           child: Row(
                             children: <Widget>[
                               Icon(
@@ -64,10 +64,10 @@ class CardImage extends StatelessWidget {
                                 color: Colors.orange.shade400,
                                 size: 16,
                               ),
-                              SizedBox(width: 4),
+                              const SizedBox(width: 4),
                               Text(
                                 "$rating",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 14.0,
                                 ),
                               ),
@@ -78,14 +78,14 @@ class CardImage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 7.0),
+                const SizedBox(height: 7.0),
                 Padding(
-                  padding: EdgeInsets.only(left: 15.0),
-                  child: Container(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Text(
                       name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.w800,
                       ),
@@ -93,21 +93,21 @@ class CardImage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 7.0),
+                const SizedBox(height: 7.0),
                 Padding(
-                  padding: EdgeInsets.only(left: 15.0),
-                  child: Container(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Row(
                       children: [
-                        Icon(Icons.location_on,
+                        const Icon(Icons.location_on,
                             size: 14, color: Colors.black54),
-                        SizedBox(
+                        const SizedBox(
                           width: 4,
                         ),
                         Text(
                           city,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.w300,
                           ),
@@ -116,20 +116,21 @@ class CardImage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 7.0),
+                const SizedBox(height: 7.0),
                 Padding(
-                  padding: EdgeInsets.only(left: 15.0),
-                  child: Container(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Row(
                       children: [
-                        Icon(Icons.category, size: 14, color: Colors.black54),
-                        SizedBox(
+                        const Icon(Icons.category,
+                            size: 14, color: Colors.black54),
+                        const SizedBox(
                           width: 4,
                         ),
                         Text(
                           category,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.w300,
                           ),

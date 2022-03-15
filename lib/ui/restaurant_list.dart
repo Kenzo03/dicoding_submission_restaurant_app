@@ -10,6 +10,7 @@ import './restaurant_detail.dart';
 //Widget
 import '../widgets/blankslate.dart';
 import '../widgets/card_image.dart';
+import '../widgets/card_label.dart';
 
 //Controller
 import '../controller/restaurant_controller.dart';
@@ -34,29 +35,37 @@ class RestaurantListPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: ListView(children: [
               const Text(
-                'Category',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: 10),
-              _buildRestaurantCategory(context),
-              SizedBox(height: 20),
-              const Text(
                 'Trending Restaurant',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.left,
               ),
               const SizedBox(height: 10),
-              _buildTrendingRestaurantList(context)
+              _buildTrendingRestaurantList(context),
+              const SizedBox(height: 20),
+              const Text(
+                'Category',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              const SizedBox(height: 10),
+              _buildRestaurantCategoryList(context),
+              const SizedBox(height: 20),
+              const Text(
+                'City',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+              const SizedBox(height: 10),
+              _buildRestaurantCityList(context),
             ])));
   }
 
-  Widget _buildRestaurantCategory(BuildContext context) {
+  Widget _buildRestaurantCategoryList(BuildContext context) {
     return FutureBuilder<List<String>>(
         future: fetchCategories(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Container(
+            return SizedBox(
               height: MediaQuery.of(context).size.height / 6,
               child: ListView.builder(
                 primary: false,
@@ -64,8 +73,7 @@ class RestaurantListPage extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
-                  return _buildRestaurantCategoryItem(
-                      context, snapshot.data![index]);
+                  return CardLabel(label: snapshot.data![index]);
                 },
               ),
             );
@@ -76,25 +84,28 @@ class RestaurantListPage extends StatelessWidget {
         });
   }
 
-  Padding _buildRestaurantCategoryItem(BuildContext context, String label) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
-      child: Container(
-          decoration: BoxDecoration(
-              color: Colors.orange, borderRadius: BorderRadius.circular(8)),
-          height: MediaQuery.of(context).size.height / 6,
-          width: MediaQuery.of(context).size.height / 4,
-          child: Center(
-              child: Text(
-            label,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-            textAlign: TextAlign.center,
-          ))),
-    );
+  Widget _buildRestaurantCityList(BuildContext context) {
+    return FutureBuilder<List<String>>(
+        future: fetchCities(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height / 6,
+              child: ListView.builder(
+                primary: false,
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  return CardLabel(label: snapshot.data![index]);
+                },
+              ),
+            );
+          } else if (snapshot.hasError) {}
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
   }
 
   Widget _buildTrendingRestaurantList(BuildContext context) {
@@ -102,7 +113,7 @@ class RestaurantListPage extends StatelessWidget {
         future: fetchTrendingRestaurant(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Container(
+            return SizedBox(
               height: MediaQuery.of(context).size.height / 2.4,
               width: MediaQuery.of(context).size.width,
               child: ListView.builder(
@@ -147,7 +158,7 @@ class RestaurantListPage extends StatelessWidget {
           if (snapshot.hasData) {
             var jsonMap = jsonDecode(snapshot.data!);
             var restaurant = Restaurant.fromJson(jsonMap);
-            return Container(
+            return SizedBox(
               height: MediaQuery.of(context).size.height,
               child: ListView.builder(
                   itemCount: restaurant.restaurants.length,

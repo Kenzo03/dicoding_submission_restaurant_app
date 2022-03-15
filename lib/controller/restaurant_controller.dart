@@ -20,6 +20,22 @@ Future<List<String>> fetchCategories() async {
   }
 }
 
+Future<List<String>> fetchCities() async {
+  var jsonText = await rootBundle.loadString('assets/local_restaurant.json');
+  var jsonMap = jsonDecode(jsonText);
+  var restaurant = Restaurant.fromJson(jsonMap);
+
+  if (jsonText == '') {
+    return [];
+  } else {
+    List<String> distinct =
+        List<String>.from(restaurant.restaurants.map((x) => x.city));
+    return [
+      ...{...distinct}
+    ];
+  }
+}
+
 Future<List<RestaurantItem>> fetchTrendingRestaurant() async {
   var jsonText = await rootBundle.loadString('assets/local_restaurant.json');
   var jsonMap = jsonDecode(jsonText);
