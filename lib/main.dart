@@ -1,3 +1,4 @@
+import 'package:deresto/ui/home_page.dart';
 import 'package:flutter/material.dart';
 
 //Model
@@ -6,6 +7,9 @@ import './data/model/restaurant.dart';
 //UI
 import './ui/restaurant_list.dart';
 import './ui/restaurant_detail.dart';
+import './ui/home_page.dart';
+import './ui/favorite_list.dart';
+import './ui/recommended_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,8 +26,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: RestaurantListPage.routeName,
+      initialRoute: HomePage.routeName,
       routes: {
+        HomePage.routeName: (context) => const HomePage(),
+        FavoriteList.routeName: (context) => const FavoriteList(),
         RestaurantListPage.routeName: (context) => const RestaurantListPage(),
         RestaurantDetailPage.routeName: (context) => RestaurantDetailPage(
               restaurant:

@@ -14,6 +14,8 @@ import '../widgets/blankslate.dart';
 import '../controller/restaurant_controller.dart';
 
 class FavoriteList extends StatelessWidget {
+  static const routeName = '/favorite_list';
+
   const FavoriteList({Key? key}) : super(key: key);
 
   @override
@@ -68,10 +70,14 @@ class FavoriteList extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    ClipRRect(
-                      child: Image.network(restaurant.pictureId,
-                          height: 120, fit: BoxFit.fill),
-                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    Hero(
+                      tag: restaurant.pictureId,
+                      child: ClipRRect(
+                        child: Image.network(restaurant.pictureId,
+                            height: 120, fit: BoxFit.fill),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8)),
+                      ),
                     ),
                   ],
                 )),
