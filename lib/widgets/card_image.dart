@@ -6,6 +6,7 @@ class CardImage extends StatelessWidget {
   final String city;
   final String category;
   final double rating;
+  final List<String> tags;
   final Function() onTap;
 
   const CardImage(
@@ -15,6 +16,7 @@ class CardImage extends StatelessWidget {
       required this.imgUrl,
       required this.name,
       required this.rating,
+      required this.tags,
       required this.onTap})
       : super(key: key);
 
@@ -36,16 +38,19 @@ class CardImage extends StatelessWidget {
                 Stack(
                   children: <Widget>[
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 3.7,
+                      height: MediaQuery.of(context).size.height / 4.2,
                       width: MediaQuery.of(context).size.width,
                       child: ClipRRect(
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(10.0),
                           topRight: Radius.circular(10.0),
                         ),
-                        child: Image.network(
-                          imgUrl,
-                          fit: BoxFit.cover,
+                        child: Hero(
+                          tag: imgUrl,
+                          child: Image.network(
+                            imgUrl,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -79,6 +84,7 @@ class CardImage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 7.0),
+                //Restaurant Name
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0),
                   child: SizedBox(
@@ -94,51 +100,70 @@ class CardImage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 7.0),
+                //Restaurant city and category
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0),
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Row(
                       children: [
-                        const Icon(Icons.location_on,
-                            size: 14, color: Colors.black54),
-                        const SizedBox(
-                          width: 4,
+                        Row(
+                          children: [
+                            const Icon(Icons.location_on,
+                                size: 14, color: Colors.black54),
+                            const SizedBox(
+                              width: 4,
+                            ),
+                            Text(
+                              city,
+                              style: const TextStyle(
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ],
                         ),
-                        Text(
-                          city,
-                          style: const TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w300,
-                          ),
+                        const SizedBox(width: 16),
+                        Row(
+                          children: [
+                            const Icon(Icons.category,
+                                size: 14, color: Colors.black54),
+                            const SizedBox(
+                              width: 4,
+                            ),
+                            Text(
+                              category,
+                              style: const TextStyle(
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
                 ),
                 const SizedBox(height: 7.0),
+                //Restaurant tags
                 Padding(
-                  padding: const EdgeInsets.only(left: 15.0),
+                  padding: const EdgeInsets.only(left: 15),
                   child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: Row(
-                      children: [
-                        const Icon(Icons.category,
-                            size: 14, color: Colors.black54),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Text(
-                          category,
-                          style: const TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                      height: 50,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: tags.map((tag) {
+                          return Row(
+                            children: [
+                              Chip(
+                                  padding: const EdgeInsets.all(4),
+                                  label: Text(tag)),
+                              const SizedBox(width: 8)
+                            ],
+                          );
+                        }).toList(),
+                      )),
+                )
               ],
             ),
           ),

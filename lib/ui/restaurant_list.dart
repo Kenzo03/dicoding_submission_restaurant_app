@@ -131,6 +131,7 @@ class RestaurantListPage extends StatelessWidget {
                         category: tempData.category,
                         city: tempData.city,
                         name: tempData.name,
+                        tags: tempData.tags,
                         rating: tempData.rating,
                         onTap: () {
                           Navigator.pushNamed(
