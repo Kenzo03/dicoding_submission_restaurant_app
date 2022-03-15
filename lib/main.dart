@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomePage.routeName: (context) => const HomePage(),
         FavoriteList.routeName: (context) => const FavoriteList(),
+        RecommendedList.routeName: (context) => const RecommendedList(),
         RestaurantListPage.routeName: (context) => const RestaurantListPage(),
         RestaurantDetailPage.routeName: (context) => RestaurantDetailPage(
               restaurant:

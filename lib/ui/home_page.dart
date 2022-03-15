@@ -1,3 +1,4 @@
+import 'package:deresto/ui/recommended_list.dart';
 import 'package:flutter/material.dart';
 
 //UI
@@ -15,12 +16,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _bottomNavIndex = 0;
-  static const String _headlineText = 'Headline';
 
   final List<BottomNavigationBarItem> _bottomNavBarItems = [
     const BottomNavigationBarItem(
       icon: Icon(Icons.home),
       label: 'Home',
+    ),
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.recommend),
+      label: 'Recommended',
     ),
     const BottomNavigationBarItem(
       icon: Icon(Icons.favorite),
@@ -36,6 +40,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _listWidget = [
     const RestaurantListPage(),
+    const RecommendedList(),
     const FavoriteList(),
   ];
 
