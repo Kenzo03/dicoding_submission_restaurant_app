@@ -102,7 +102,7 @@ class RestaurantDetailPage extends StatelessWidget {
                         const SizedBox(height: 16),
                         const Text(
                           'Food List',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -113,7 +113,7 @@ class RestaurantDetailPage extends StatelessWidget {
                         const SizedBox(height: 16),
                         const Text(
                           'Drink List',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -142,7 +142,7 @@ class RestaurantDetailPage extends StatelessWidget {
             children: [
               Expanded(
                 child: ClipRRect(
-                  borderRadius: BorderRadius.vertical(
+                  borderRadius: const BorderRadius.vertical(
                       top: Radius.circular(8), bottom: Radius.zero),
                   child: Image.asset(
                     imgPath,
@@ -155,7 +155,7 @@ class RestaurantDetailPage extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   items[index].name,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,
                   ),
