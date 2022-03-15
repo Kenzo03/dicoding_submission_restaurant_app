@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+
+//Model
 import '../data/model/restaurant.dart';
+
+//Widget
+import '../widgets/favorite_button.dart';
 
 class RestaurantDetailPage extends StatelessWidget {
   static const routeName = '/restaurant_detail';
@@ -42,40 +47,46 @@ class RestaurantDetailPage extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width,
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [
-                                  const Icon(Icons.location_on,
-                                      size: 18, color: Colors.black54),
-                                  const SizedBox(
-                                    width: 4,
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.location_on,
+                                          size: 18, color: Colors.black54),
+                                      const SizedBox(
+                                        width: 4,
+                                      ),
+                                      Text(
+                                        restaurant.city,
+                                        style: const TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    restaurant.city,
-                                    style: const TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                  const SizedBox(width: 16),
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.category,
+                                          size: 18, color: Colors.black54),
+                                      const SizedBox(
+                                        width: 4,
+                                      ),
+                                      Text(
+                                        restaurant.category,
+                                        style: const TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
-                              const SizedBox(width: 16),
-                              Row(
-                                children: [
-                                  const Icon(Icons.category,
-                                      size: 18, color: Colors.black54),
-                                  const SizedBox(
-                                    width: 4,
-                                  ),
-                                  Text(
-                                    restaurant.category,
-                                    style: const TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              const FavoriteButton()
                             ],
                           ),
                         ),
